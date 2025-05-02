@@ -15,7 +15,7 @@ public class LightBoard
     for(int i = 0;i<lights.length;i++){
       for(int j = 0;j<lights[0].length;j++){
         if(Math.random()<=0.4)
-          lights[i][j]==true;
+          lights[i][j]=true;
       }
     }
   }

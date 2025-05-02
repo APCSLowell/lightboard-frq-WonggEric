@@ -12,10 +12,10 @@ public class LightBoard
   {
     /* to be implemented in part (a) */
     lights = new boolean[numRows][numCols];
-    for(int i = 0;i<lights.length;i++){
-      for(int j = 0;j<lights[0].length;j++){
-        if(Math.random()<=0.4)
-          lights[i][j]=true;
+    for (int i = 0; i < lights.length; i++) {
+      for (int j = 0; j < lights[0].length; j++) {
+        if (Math.random() <= 0.4)
+          lights[i][j] = true;
       }
     }
   }
@@ -27,29 +27,33 @@ public class LightBoard
   public boolean evaluateLight(int row, int col)
   {
     /* to be implemented in part (b) */
-    int r = 0;
-    int onCol = 0;;
-     for(int i = 0;i<lights.length;i++){
-        for(int j = 0;j<lights[0].length;j++){
-          if(lights[i+r][j]){
-            onCol++;
-          }
-        }
-     }
-    if(lights[row][col]){
-      if(onCol%2==0){
-        return true;
-      }else{
-        if(onCol%3==0){
-        return false;
-        }
+    int onCol = 0;
+    for (int i = 0; i < lights.length; i++) {
+      if (lights[i][col]) {
+        onCol++;
+      }
     }
-   return lights[row][col];
+
+    if (lights[row][col]) {
+      if (onCol % 2 == 0) {
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      if (onCol % 3 == 0) {
+        return true;
+      }
+    }
+
+    return false;
   }
+
   public boolean[][] getLights()
   {
     return lights;
   }
+
   //used for testing
   public String toString()
   {
@@ -65,5 +69,4 @@ public class LightBoard
     }
     return s;
   }
-  
 }
